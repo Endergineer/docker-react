@@ -5,6 +5,8 @@ services:
 before_install:
   - docker build -t docker-react -f Dockerfile.dev .
 
+language: node_js
+
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
