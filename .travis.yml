@@ -4,6 +4,16 @@ services:
   
 before_install:
   - docker build -t docker-react -f Dockerfile.dev .
-  
-script:
-  - docker run docker-react npm run test -- --coverage --forceExit
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-464221629897"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
