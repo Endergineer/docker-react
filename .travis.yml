@@ -7,6 +7,9 @@ before_install:
 
 language: node_js
 
+node_js:
+  - "10.14.2"
+
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
